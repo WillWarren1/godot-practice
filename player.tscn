@@ -1,0 +1,166 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/Martha_Green.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/player.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.07689, 14.5986 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idledown"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idleleft"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 13 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idleright"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idleup"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 19 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Walkdown"
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0416667, 0.375, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Walkleft"
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0416667, 0.333333, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 12 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Walkright"
+length = 1.6
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0666667, 0.4, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 6 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Walkup"
+length = 1.6
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.333333, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 20, 18 ]
+}
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+vframes = 4
+hframes = 6
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16.0284, 16.6252 )
+shape = SubResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "Idledown"
+anims/Idledown = SubResource( 2 )
+anims/Idleleft = SubResource( 3 )
+anims/Idleright = SubResource( 4 )
+anims/Idleup = SubResource( 5 )
+anims/Walkdown = SubResource( 6 )
+anims/Walkleft = SubResource( 7 )
+anims/Walkright = SubResource( 8 )
+anims/Walkup = SubResource( 9 )
