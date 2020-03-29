@@ -1,0 +1,12 @@
+C:\Users\willi\Projects\.mono\temp\bin\Tools\zeldalike.dll
+C:\Users\willi\Projects\.mono\temp\bin\Tools\zeldalike.pdb
+C:\Users\willi\Projects\.mono\temp\obj\Tools\zeldalike.csprojAssemblyReference.cache
+C:\Users\willi\Projects\.mono\temp\obj\Tools\zeldalike.csproj.CoreCompileInputs.cache
+C:\Users\willi\Projects\.mono\temp\obj\Tools\zeldalike.dll
+C:\Users\willi\Projects\.mono\temp\obj\Tools\zeldalike.pdb
+C:\Users\willi\projects\zeldalike\.mono\temp\bin\Tools\zeldalike.dll
+C:\Users\willi\projects\zeldalike\.mono\temp\bin\Tools\zeldalike.pdb
+C:\Users\willi\projects\zeldalike\.mono\temp\obj\Tools\zeldalike.csprojAssemblyReference.cache
+C:\Users\willi\projects\zeldalike\.mono\temp\obj\Tools\zeldalike.csproj.CoreCompileInputs.cache
+C:\Users\willi\projects\zeldalike\.mono\temp\obj\Tools\zeldalike.dll
+C:\Users\willi\projects\zeldalike\.mono\temp\obj\Tools\zeldalike.pdb
