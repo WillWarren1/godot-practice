@@ -4,7 +4,7 @@ using System;
 public class player : KinematicBody2D
 {
     [Export] public int speed = 100;
-
+    [Signal] public delegate void _BloodSeeker();
     public Vector2 velocity = new Vector2();
 
     public void GetInput()
@@ -57,6 +57,15 @@ public class player : KinematicBody2D
             animation.Play("Idleup");
         }
 
+        for (int i = 0; i < GetSlideCount(); i++)
+        {
+            var collision = GetSlideCollision(i);
+            var collider = collision.Collider;
+            if (collider is KinematicBody2D)
+            {
+                EmitSignal(nameof(_BloodSeeker), "thirsty");
+            }
+        }
         velocity = velocity.Normalized() * speed;
     }
 

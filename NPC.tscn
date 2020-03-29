@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/Jeremy Pink.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/NPC.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.50627, 9.16517 )
+
+[node name="NPC" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16.1989, 23.1901 )
+shape = SubResource( 1 )
+
+[node name="jeremy_sprite" type="Sprite" parent="."]
+position = Vector2( 0.852577, 0.341034 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 4
+hframes = 6
+frame = 1
