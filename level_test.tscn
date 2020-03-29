@@ -1,15 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilegrass.tres" type="TileSet" id=2]
 [ext_resource path="res://house.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=4]
 
 [node name="level test" type="Node2D"]
-
-[node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 202.197, 125.269 )
-z_index = 1
-collision_mask = 3
 
 [node name="grass" type="TileMap" parent="."]
 position = Vector2( 15, 17 )
@@ -20,4 +16,9 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -6
 
 [node name="house" parent="." instance=ExtResource( 3 )]
 position = Vector2( 279.646, 23.9102 )
-z_index = 2
+
+[node name="npc" parent="." instance=ExtResource( 4 )]
+position = Vector2( 95.1308, 97.0334 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 204.782, 165.227 )

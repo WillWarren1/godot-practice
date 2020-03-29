@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/player.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.07689, 14.5986 )
+extents = Vector2( 7.07689, 8.26655 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idledown"
@@ -144,14 +144,15 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.131943, -0.131939 )
 texture = ExtResource( 1 )
 centered = false
 vframes = 4
 hframes = 6
-frame = 12
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16.0284, 16.6252 )
+position = Vector2( 15.6326, 24.0139 )
 shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
