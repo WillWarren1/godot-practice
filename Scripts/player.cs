@@ -18,8 +18,10 @@ public class player : KinematicBody2D
     {
         velocity = new Vector2();
         AnimationPlayer animation = (AnimationPlayer)GetNode("anim");
+        Sprite sprite = (Sprite)GetNode("Sprite");
+        Console.WriteLine(sprite);
         string direction = animation.CurrentAnimation;
-
+        Console.WriteLine(direction);
         if (Input.IsActionPressed("right"))
         {
             velocity.x += 1;
@@ -64,6 +66,7 @@ public class player : KinematicBody2D
         // JUMPING
         if (Input.IsActionPressed("jump"))
         {
+            speed = 200;
             if (!isJumping)
             {
                 jumpStartY = Position.y;
@@ -78,8 +81,8 @@ public class player : KinematicBody2D
 
             if (direction.Contains("right"))
             {
-                velocity.y -= movementModifier;
-                velocity.x += jumpVelocity;
+                velocity.x += 2 * jumpVelocity;
+                velocity.y = 10 * (float)Math.Sin(velocity.x / 2);
             }
 
             if (direction.Contains("down"))
@@ -91,8 +94,8 @@ public class player : KinematicBody2D
             if (direction.Contains("left"))
             {
 
-                velocity.y -= movementModifier;
-                velocity.x -= jumpVelocity;
+                velocity.x -= 2 * jumpVelocity;
+                velocity.y = -10 * (float)Math.Sin(velocity.x / 2);
             }
         }
         else if (Input.IsActionJustReleased("jump"))
@@ -103,38 +106,37 @@ public class player : KinematicBody2D
         }
         else if (isFalling)
         {
-            Console.WriteLine("isFalling jumpStartY =" + jumpStartY);
-            if (Position.y < jumpStartY)
-            {
-                Console.WriteLine("returning to position");
-                if (direction.Contains("up"))
-                {
-                    velocity.y -= -movementModifier;
-                }
+            // Console.WriteLine("isFalling jumpStartY =" + jumpStartY);
+            // if (Position.y < jumpStartY)
+            // {
+            //     Console.WriteLine("returning to position");
+            //     if (direction.Contains("up"))
+            //     {
+            //         // velocity.y -= -movementModifier;
+            //     }
 
-                if (direction.Contains("right"))
-                {
-                    velocity.y -= -movementModifier;
-                    velocity.x += jumpVelocity;
-                }
+            //     if (direction.Contains("right"))
+            //     {
+            //         velocity.x += jumpVelocity;
+            //     }
 
-                if (direction.Contains("down"))
-                {
+            //     if (direction.Contains("down"))
+            //     {
 
-                    velocity.y += -movementModifier;
+            //         // velocity.y += -movementModifier;
 
-                }
-                if (direction.Contains("left"))
-                {
+            //     }
+            //     if (direction.Contains("left"))
+            //     {
 
-                    velocity.y -= -movementModifier;
-                    velocity.x -= jumpVelocity;
-                }
-            }
-            else if (Position.y >= jumpStartY)
+            //         velocity.x -= jumpVelocity;
+            //     }
+            // }
+            if (Position.y >= jumpStartY)
             {
                 Console.WriteLine("Landed");
                 isFalling = false;
+                speed = 100;
             }
         }
 
