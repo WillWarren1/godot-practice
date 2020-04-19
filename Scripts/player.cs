@@ -12,6 +12,8 @@ public class player : KinematicBody2D
     public bool isJumping = false;
     public bool isFalling = false;
 
+    public bool isMaxJumpHeight = false;
+
     public float jumpStartY = 0;
 
     public void GetInput()
@@ -73,32 +75,40 @@ public class player : KinematicBody2D
             }
             isJumping = true;
             movementModifier = jumpVelocity;
+            if (velocity.y < jumpStartY - speed)
+            {
+                Console.WriteLine("MAX");
+                isMaxJumpHeight = true;
+            }
 
             if (direction.Contains("up"))
             {
                 velocity.y -= movementModifier;
             }
-
-            if (direction.Contains("right"))
+            if (!isMaxJumpHeight)
             {
-                velocity.x += 2 * jumpVelocity;
-                velocity.y = 10 * (float)Math.Sin(velocity.x / 2);
-            }
+                ZIndex += 1;
+                if (direction.Contains("right"))
+                {
+                    velocity.x += 2 * jumpVelocity;
+                    velocity.y = 10 * (float)Math.Sin(velocity.x / 2);
+                }
 
-            if (direction.Contains("down"))
-            {
+                if (direction.Contains("down"))
+                {
 
-                velocity.y += movementModifier;
+                    velocity.y += movementModifier;
 
-            }
-            if (direction.Contains("left"))
-            {
+                }
+                if (direction.Contains("left"))
+                {
 
-                velocity.x -= 2 * jumpVelocity;
-                velocity.y = -10 * (float)Math.Sin(velocity.x / 2);
+                    velocity.x -= 2 * jumpVelocity;
+                    velocity.y = -10 * (float)Math.Sin(velocity.x / 2);
+                }
             }
         }
-        else if (Input.IsActionJustReleased("jump"))
+        else if (Input.IsActionJustReleased("jump") || isMaxJumpHeight)
         {
             Console.WriteLine("released jump");
             isJumping = false;
@@ -106,6 +116,12 @@ public class player : KinematicBody2D
         }
         else if (isFalling)
         {
+            Console.WriteLine("Faling");
+            if (ZIndex > 0)
+            {
+                ZIndex -= 1;
+            }
+            Console.WriteLine(Position.y >= jumpStartY);
             // Console.WriteLine("isFalling jumpStartY =" + jumpStartY);
             // if (Position.y < jumpStartY)
             // {
@@ -132,9 +148,11 @@ public class player : KinematicBody2D
             //         velocity.x -= jumpVelocity;
             //     }
             // }
+
             if (Position.y >= jumpStartY)
             {
                 Console.WriteLine("Landed");
+                isMaxJumpHeight = false;
                 isFalling = false;
                 speed = 100;
             }
